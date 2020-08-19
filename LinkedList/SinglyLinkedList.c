@@ -99,8 +99,7 @@ void insert_front( struct node **p, int x)
 	}
 }
 
-void insert_rear (struct node **p, int x)
-{
+void insert_rear(struct node **p, int x){
 	struct node *temp, *temp2;
 	temp = (struct node*)malloc(sizeof(struct node));
 	temp2 = *p;
