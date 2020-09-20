@@ -191,6 +191,47 @@ Node* deleteNode(Node* root, int data) {
     return root; 
 }
 
+Node* insertIter(Node* root, int key){
+    // Create a new Node containing
+    // the new element
+    Node* newnode = newNode(key);
+ 
+    // Pointer to start traversing from root and
+    // traverses downward path to search
+    // where the new node to be inserted
+    Node* x = root;
+ 
+    // Pointer y maintains the trailing
+    // pointer of x
+    Node* y = NULL;
+ 
+    while (x != NULL) {
+        y = x;
+        if (key < x->data)
+            x = x->left;
+        else
+            x = x->right;
+    }
+ 
+    // If the root is NULL i.e the tree is empty
+    // The new node is the root node
+    if (y == NULL)
+        y = newnode;
+ 
+    // If the new key is less then the leaf node key
+    // Assign the new node to be its left child
+    else if (key < y->data)
+        y->left = newnode;
+ 
+    // else assign the new node its right child
+    else
+        y->right = newnode;
+ 
+    // Returns the pointer where the
+    // new node is inserted
+    return y;
+}
+
 int main() {
 	Node* root = NULL;
 	root = Insert(root, 7);

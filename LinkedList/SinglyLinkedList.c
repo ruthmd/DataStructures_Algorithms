@@ -117,9 +117,7 @@ void insert_rear(struct node **p, int x){
 	}
 }
 
-void insert_loc( struct node **p, int x, int k)
-{
-	
+void insert_loc( struct node **p, int x, int k){
 	struct node *temp,*q1 ,*q2;
 	q1= *p;
 	q2 = NULL;
@@ -147,8 +145,7 @@ void insert_loc( struct node **p, int x, int k)
 	}
 }
 
-void del( struct node **p, int x)
-{
+void del( struct node **p, int x){
 	struct node *q, *prev;
 	q = *p;
 	prev = NULL;
@@ -164,8 +161,7 @@ void del( struct node **p, int x)
 	free(q);
 }
 
-void del_pos( struct node **p, int l)
-{
+void del_pos( struct node **p, int l){
 	struct node *q, *prev;
 	int i;
 	q = *p;
@@ -183,8 +179,7 @@ void del_pos( struct node **p, int l)
 	free(q);
 }
 
-void reverse(struct node **p)
-{
+void reverse(struct node **p){
 	struct node *q, *prev, *temp;
 	prev = NULL;
     q = *p;
@@ -197,3 +192,15 @@ void reverse(struct node **p)
 	}
 	*p = prev;
 }
+
+struct node* recursiveReverse(struct node* node) { 
+	if (node==NULL)
+		return NULL;
+	if (node->next==NULL)
+		return node;
+		
+	struct node *temp = reverse(node->next); 
+	node->next->next = node;
+	node->next = NULL;
+	return temp;
+} 
